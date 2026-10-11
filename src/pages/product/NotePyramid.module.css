@@ -1,0 +1,89 @@
+.wrap {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.tiers {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.tier {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.tierHead {
+  font-size: var(--step--1);
+}
+
+.tierHead strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-1);
+  margin-right: var(--space-2);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.photo,
+.swatch {
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.swatch {
+  display: block;
+  opacity: 0.8;
+}
+
+.noteName {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+}
+
+.more {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+  }
+  .tier {
+    width: var(--w);
+    margin-inline: auto;
+    justify-items: center;
+    text-align: center;
+  }
+  .chips {
+    justify-content: center;
+  }
+  .detail {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .photo,
+  .swatch {
+    width: 200px;
+  }
+}

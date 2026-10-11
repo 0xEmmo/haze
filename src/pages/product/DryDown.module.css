@@ -1,0 +1,103 @@
+.wrap {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  background: radial-gradient(80% 80% at 50% 100%, var(--paper) 0%, var(--fog-deep) 100%);
+  border: 1px solid var(--line);
+}
+
+.blob {
+  position: absolute;
+  width: 38%;
+  aspect-ratio: 1;
+  margin: -19% 0 0 -19%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+}
+
+.blob > span {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+  transition: opacity 300ms;
+}
+
+.controls {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.phase {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+}
+
+.range {
+  width: 100%;
+  accent-color: var(--ember);
+  height: 32px;
+}
+
+.levels {
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--step--1);
+}
+
+.levels li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--space-1) var(--space-3);
+  align-items: center;
+}
+
+.levels li > :last-child {
+  grid-column: 2;
+}
+
+.tier {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--ember);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-out);
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+  }
+}
