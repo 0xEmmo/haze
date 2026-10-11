@@ -1,0 +1,158 @@
+.page {
+  padding-top: var(--space-7);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.head h1 {
+  font-size: var(--step-5);
+  line-height: 1;
+}
+
+.scroller {
+  overflow-x: auto;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+}
+
+.table {
+  width: 100%;
+  min-width: calc(110px + var(--cols) * 210px);
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table thead td {
+  width: 110px;
+}
+
+.table th,
+.table td {
+  padding: var(--space-4) var(--space-3);
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--step--1);
+}
+
+.table tbody th {
+  position: sticky;
+  left: calc(var(--gutter) * -1);
+  z-index: 1;
+  background: var(--fog);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.table thead th {
+  font-weight: 400;
+  border-bottom: 0;
+}
+
+.colHead {
+  display: grid;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+
+.colHead > span:first-child {
+  border-radius: var(--radius-m);
+}
+
+.colHead .display,
+.colHead :global(.display) {
+  font-size: var(--step-2);
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: var(--step--2);
+}
+
+.notes {
+  display: grid;
+  gap: 4px;
+}
+
+.notes li {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 2px 6px;
+  margin-inline: -6px;
+  border-radius: 4px;
+}
+
+.notes li[data-shared='true'] {
+  background: var(--ember-tint);
+  font-weight: 600;
+}
+
+.tier {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.meter {
+  display: flex;
+  gap: 3px;
+}
+
+.meter span {
+  width: 18px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line-strong);
+}
+
+.meter span[data-on='true'] {
+  background: var(--ember);
+}
+
+.prices {
+  display: grid;
+  gap: 2px;
+}
+
+.empty {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding-block: var(--space-6);
+}
+
+.empty .display,
+.empty :global(.display) {
+  font-size: var(--step-3);
+}
+
+.emptyActions,
+.addList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.add {
+  display: grid;
+  gap: var(--space-3);
+}
