@@ -4,7 +4,7 @@
 
 It’s a front-end project. The catalogue, pricing and payment gateway are mocks inside this repo, so it clones and runs with no keys and no backend. Haze, its perfumers and its prices are fictional; the photographs are real.
 
-**Live:** https://haze-0xemmo.vercel.app
+**Live:** https://haze-phi-seven.vercel.app
 
 | Home (desktop) | Scent wheel (desktop) | Product with note pyramid (desktop) |
 | --- | --- | --- |
