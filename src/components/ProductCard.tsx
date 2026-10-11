@@ -24,7 +24,7 @@ export function ProductCard({ product, sizes = '(min-width: 1100px) 25vw, (min-w
 
   return (
     <article className={styles.card}>
-      <Link to={`/shop/${product.slug}`} className={styles.media}>
+      <Link to={`/shop/${product.slug}`} className={styles.media} tabIndex={-1} aria-hidden>
         <Photo name={product.photos[0]!} alt="" sizes={sizes} ratio={4 / 5} priority={priority} />
         {product.photos[1] && <Photo name={product.photos[1]} alt="" sizes={sizes} ratio={4 / 5} className={styles.alt} />}
         {product.badge && <span className={`pill ${styles.badge}`}>{BADGE[product.badge]}</span>}
