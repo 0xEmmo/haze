@@ -13,7 +13,7 @@ const out = [
 for (const [file, size, pad] of out) {
   const inner = size - pad * 2
   const art = await sharp(svg, { density: 300 }).resize(inner, inner).png().toBuffer()
-  await sharp({ create: { width: size, height: size, channels: 4, background: pad ? '#1c1a17' : { r: 0, g: 0, b: 0, alpha: 0 } } })
+  await sharp({ create: { width: size, height: size, channels: 4, background: pad ? '#24201e' : { r: 0, g: 0, b: 0, alpha: 0 } } })
     .composite([{ input: art, left: pad, top: pad }])
     .png()
     .toFile(file)
