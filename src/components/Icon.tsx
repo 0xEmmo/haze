@@ -45,6 +45,18 @@ const paths = {
     </>
   ),
   box: <path d="M4 8l8-4 8 4v8l-8 4-8-4V8Zm0 0 8 4 8-4m-8 4v8" />,
+  wheel: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M12 3v5.5m0 7V21M3 12h5.5m7 0H21M5.6 5.6l3.9 3.9m5 5 3.9 3.9m0-12.8-3.9 3.9m-5 5-3.9 3.9" />
+    </>
+  ),
+  compare: <path d="M4 5h6v14H4zM14 5h6v14h-6z" />,
+  gift: <path d="M4 10h16v10H4zM3 7h18v3H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1.2C7 7 9 7 12 7Zm0 0c1.5-3 5-3.5 5-1.2C17 7 15 7 12 7Z" />,
+  flame: <path d="M12 21c-3.9 0-6.5-2.7-6.5-6.2 0-3.6 3-5.6 4-9.3 2.6 1.6 3.7 4 3.6 6 1-.6 1.7-1.6 2-2.8 1.9 1.7 3.4 3.8 3.4 6.1 0 3.5-2.6 6.2-6.5 6.2Z" />,
+  spark: <path d="M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5m7 7L18 18M18 6l-2.5 2.5m-7 7L6 18" />,
+  vial: <path d="M9 3h6M10 3v12a2 2 0 0 0 4 0V3M10 10h4" />,
 } as const
 
 export type IconName = keyof typeof paths
