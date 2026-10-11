@@ -164,8 +164,8 @@ export function ScentWheel({ family, note, onSelect }: Props) {
         <text x={C} y={C - 8} className={styles.hubSmall} aria-hidden>
           {note ? 'note' : 'family'}
         </text>
-        <text x={C} y={C + 22} className={styles.hubLabel} aria-hidden>
-          {familyInfo[family].label}
+        <text x={C} y={C + 20} className={styles.hubLabel} style={note ? { fontSize: 22 } : undefined} aria-hidden>
+          {note ? (notesByFamily(family).find((n) => n.id === note)?.name ?? familyInfo[family].label) : familyInfo[family].label}
         </text>
         <path d="M300 2 l-9 -0 l9 14 l9 -14 Z" className={styles.pointer} aria-hidden />
       </svg>

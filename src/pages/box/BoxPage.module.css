@@ -74,6 +74,8 @@
 
 .slot {
   display: grid;
+  grid-template-rows: auto 2.5em auto;
+  align-items: start;
   justify-items: center;
   gap: var(--space-1);
   text-align: center;
@@ -86,7 +88,7 @@
   font-weight: 400;
   font-size: var(--step--1);
   line-height: 1.15;
-  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 /* a 2 ml spray, drawn in CSS, filled with the family colour */
@@ -265,6 +267,9 @@
 }
 
 @media (max-width: 699px) {
+  .slot strong {
+    font-size: 12.5px;
+  }
   .headPhoto {
     display: none !important;
   }
