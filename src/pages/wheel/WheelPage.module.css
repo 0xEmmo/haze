@@ -1,0 +1,158 @@
+.page {
+  padding-top: var(--space-7);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 40rem;
+  margin-bottom: var(--space-6);
+}
+
+.head h1 {
+  font-size: var(--step-5);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.wheelCol {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.panel {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding: var(--space-5);
+  border-radius: var(--radius-l);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--fam);
+}
+
+.panel h2 {
+  font-size: var(--step-4);
+  line-height: 1;
+}
+
+.famTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.blurb {
+  font-size: var(--step-1);
+  color: var(--ink-soft);
+}
+
+.noteList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.noteHead {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.notePhoto,
+.noteSwatch {
+  flex: 0 0 96px;
+  width: 96px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.noteSwatch {
+  display: block;
+  background: var(--fam);
+  opacity: 0.8;
+}
+
+.back {
+  font-size: var(--step--1);
+  margin-bottom: var(--space-1);
+}
+
+.subhead {
+  margin-top: var(--space-3);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.matches {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.match {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2);
+  margin-inline: calc(var(--space-2) * -1);
+  border-radius: var(--radius-s);
+  text-decoration: none;
+  font-size: var(--step--1);
+}
+
+.match:hover {
+  background: var(--fog);
+}
+
+.match > span:first-child {
+  border-radius: var(--radius-s);
+}
+
+.matchText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.matchText strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-1);
+}
+
+.matchText > :last-child {
+  width: 56px;
+  margin-top: 4px;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: start;
+  }
+  .panel {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-5));
+  }
+}

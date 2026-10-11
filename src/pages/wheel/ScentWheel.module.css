@@ -1,0 +1,125 @@
+.frame {
+  width: min(100%, 620px);
+  margin-inline: auto;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: visible;
+  cursor: grab;
+}
+
+.svg[data-dragging='true'] {
+  cursor: grabbing;
+}
+
+.spin {
+  transform-origin: 300px 300px;
+  transition: transform 700ms cubic-bezier(0.25, 0.9, 0.25, 1);
+}
+
+.svg[data-dragging='true'] .spin {
+  transition: none;
+}
+
+.famPath,
+.notePath {
+  cursor: pointer;
+  stroke: var(--fog);
+  stroke-width: 1;
+  transition:
+    opacity 300ms var(--ease-out),
+    filter 300ms;
+  outline: none;
+}
+
+.famPath {
+  opacity: 0.82;
+}
+
+.notePath {
+  opacity: 0.32;
+}
+
+.family[data-selected='true'] .famPath {
+  opacity: 1;
+}
+
+.family[data-selected='true'] .notePath {
+  opacity: 0.62;
+}
+
+.note[data-active='true'] .notePath {
+  opacity: 1;
+}
+
+.famPath:hover,
+.notePath:hover {
+  filter: brightness(1.08);
+}
+
+.famPath:focus-visible,
+.notePath:focus-visible {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.famLabel {
+  fill: #fff;
+  font-family: var(--font-display);
+  font-size: 19px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.noteLabel {
+  fill: var(--ink);
+  font-family: var(--font-text);
+  font-size: 12.5px;
+  font-weight: 500;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.family[data-selected='true'] .noteLabel {
+  font-weight: 650;
+}
+
+.note[data-active='true'] .noteLabel {
+  fill: #fff;
+}
+
+.noteLabel[text-anchor='start'] {
+  text-anchor: start;
+}
+
+.hub {
+  fill: var(--paper);
+  stroke: var(--line-strong);
+}
+
+.hubSmall {
+  fill: var(--muted);
+  font-family: var(--font-text);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-anchor: middle;
+}
+
+.hubLabel {
+  fill: var(--ink);
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-style: italic;
+  text-anchor: middle;
+}
+
+.pointer {
+  fill: var(--ink);
+}
