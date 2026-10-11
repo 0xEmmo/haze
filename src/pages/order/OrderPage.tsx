@@ -14,7 +14,7 @@ export default function OrderPage() {
   const { id = '' } = useParams()
   const placed = useSearchParams()[0].get('placed') === '1'
   const order = useOrders((s) => s.orders.find((o) => o.id === id))
-  const others = useOrders((s) => s.orders.filter((o) => o.id !== id))
+  const others = useOrders((s) => s.orders).filter((o) => o.id !== id)
   usePageTitle(order ? `Order ${order.id}` : 'Order not found')
 
   if (!order) {
