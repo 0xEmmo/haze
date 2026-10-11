@@ -4,6 +4,8 @@ import { lineKey, MAX_QTY, type CartLine } from '@/lib/cart'
 
 interface CartState {
   lines: CartLine[]
+  /** The last line taken out, so the bag can offer an inline undo. */
+  removed: { line: CartLine; index: number } | null
   giftWrap: boolean
   addItem: (l: Extract<CartLine, { type: 'item' }>) => void
   addBox: (slugs: string[]) => void
@@ -18,15 +20,16 @@ export const useCart = create<CartState>()(
   persist(
     (set, get) => ({
       lines: [],
+      removed: null,
       giftWrap: false,
       addItem: (incoming) =>
         set((s) => {
           const key = lineKey(incoming)
           const existing = s.lines.find((l) => lineKey(l) === key)
           if (existing && existing.type === 'item') {
-            return { lines: s.lines.map((l) => (l === existing ? { ...existing, qty: Math.min(MAX_QTY, existing.qty + incoming.qty) } : l)) }
+            return { removed: null, lines: s.lines.map((l) => (l === existing ? { ...existing, qty: Math.min(MAX_QTY, existing.qty + incoming.qty) } : l)) }
           }
-          return { lines: [...s.lines, incoming] }
+          return { removed: null, lines: [...s.lines, incoming] }
         }),
       addBox: (slugs) => set((s) => ({ lines: [...s.lines, { type: 'box', id: Math.random().toString(36).slice(2, 8), slugs }] })),
       setQty: (key, qty) =>
@@ -35,19 +38,19 @@ export const useCart = create<CartState>()(
         const index = get().lines.findIndex((l) => lineKey(l) === key)
         if (index < 0) return null
         const line = get().lines[index]!
-        set((s) => ({ lines: s.lines.filter((_, i) => i !== index) }))
+        set((s) => ({ lines: s.lines.filter((_, i) => i !== index), removed: { line, index } }))
         return { line, index }
       },
       restore: (line, index) =>
         set((s) => {
-          if (s.lines.some((l) => lineKey(l) === lineKey(line))) return s
+          if (s.lines.some((l) => lineKey(l) === lineKey(line))) return { removed: null }
           const lines = [...s.lines]
           lines.splice(index, 0, line)
-          return { lines }
+          return { lines, removed: null }
         }),
       setGiftWrap: (giftWrap) => set({ giftWrap }),
-      clear: () => set({ lines: [], giftWrap: false }),
+      clear: () => set({ lines: [], giftWrap: false, removed: null }),
     }),
-    { name: 'haze.cart', version: 1 },
+    { name: 'haze.cart', version: 1, partialize: (s) => ({ lines: s.lines, giftWrap: s.giftWrap }) },
   ),
 )

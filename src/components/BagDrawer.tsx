@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { fragranceBySlug } from '@/data/catalogue'
+import { fragranceBySlug, productBySlug } from '@/data/catalogue'
 import { useBag } from '@/hooks/useBag'
 import { GIFT_WRAP_PRICE, MAX_QTY } from '@/lib/cart'
 import { formatNaira } from '@/lib/money'
@@ -9,20 +9,15 @@ import { useUi } from '@/stores/ui'
 import { Dialog } from './Dialog'
 import { Photo } from './Photo'
 import { QuantityStepper } from './QuantityStepper'
-import { useToast } from './toast'
 import styles from './BagDrawer.module.css'
 
 export function BagLines({ compact = false, onNavigate }: { compact?: boolean; onNavigate?: () => void }) {
   const { lines } = useBag()
   const setQty = useCart((s) => s.setQty)
   const remove = useCart((s) => s.remove)
-  const restore = useCart((s) => s.restore)
-  const toast = useToast()
 
-  const removeLine = (key: string, name: string) => {
-    const removed = remove(key)
-    if (removed) toast(`Removed ${name}`, { action: { label: 'Undo', onClick: () => restore(removed.line, removed.index) } })
-  }
+  // undo lives inline: the drawer is a modal dialog, so a toast behind it can't be clicked
+  const removeLine = (key: string) => remove(key)
 
   return (
     <ul role="list" className={styles.lines} data-compact={compact}>
@@ -37,7 +32,7 @@ export function BagLines({ compact = false, onNavigate }: { compact?: boolean; o
               <p className={styles.name}>Discovery box</p>
               <p className={styles.meta}>{l.slugs.map((s) => fragranceBySlug(s)!.name).join(' · ')}</p>
               <div className={styles.row}>
-                <button type="button" className={styles.remove} onClick={() => removeLine(l.key, 'discovery box')}>
+                <button type="button" className={styles.remove} onClick={() => removeLine(l.key)}>
                   Remove<span className="sr-only"> discovery box</span>
                 </button>
               </div>
@@ -61,7 +56,7 @@ export function BagLines({ compact = false, onNavigate }: { compact?: boolean; o
               {l.qty > l.available && <p className="error">{l.available === 0 ? 'Sold out in this size' : `Only ${l.available} left`}</p>}
               <div className={styles.row}>
                 <QuantityStepper size="sm" value={l.qty} max={Math.min(MAX_QTY, Math.max(1, l.available))} onChange={(n) => setQty(l.key, n)} label={`Quantity of ${l.product.name}`} />
-                <button type="button" className={styles.remove} onClick={() => removeLine(l.key, l.product.name)}>
+                <button type="button" className={styles.remove} onClick={() => removeLine(l.key)}>
                   Remove<span className="sr-only"> {l.product.name}</span>
                 </button>
               </div>
@@ -71,6 +66,22 @@ export function BagLines({ compact = false, onNavigate }: { compact?: boolean; o
         ),
       )}
     </ul>
+  )
+}
+
+export function UndoRemove() {
+  const removed = useCart((s) => s.removed)
+  const restore = useCart((s) => s.restore)
+  if (!removed) return null
+  const l = removed.line
+  const name = l.type === 'box' ? 'Discovery box' : (productBySlug(l.slug)?.name ?? 'Item')
+  return (
+    <p className={styles.undo} role="status">
+      <span>Removed {name}</span>
+      <button type="button" className="link-btn" onClick={() => restore(removed.line, removed.index)}>
+        Undo
+      </button>
+    </p>
   )
 }
 
@@ -134,6 +145,7 @@ export function BagDrawer() {
               You have <strong className="num">{formatNaira(credit)}</strong> sample box credit. It comes off your next full-size bottle.
             </p>
           )}
+          <UndoRemove />
           <BagLines compact onNavigate={close} />
           <GiftWrapToggle />
           {draft > 0 && draft < 5 && (
@@ -144,6 +156,7 @@ export function BagDrawer() {
         </div>
       ) : (
         <div className={styles.empty}>
+          <UndoRemove />
           <p className="display">Nothing here yet.</p>
           <p className="muted">Not sure what you like? Five vials cost {formatNaira(18000)}, and that comes back as credit on a full bottle.</p>
           <Link to="/box" className="btn" onClick={close}>
