@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react'
 import { familyInfo, notesByFamily } from '@/data/notes'
 import { FAMILIES, type Family } from '@/data/types'
-import { arcPath, flipLabel, polar, rotationFor, segments, subdivide } from '@/lib/wheel'
+import { arcPath, flipLabel, flipRadial, polar, rotationFor, segments, subdivide } from '@/lib/wheel'
 import styles from './ScentWheel.module.css'
 
 const C = 300
@@ -128,7 +128,7 @@ export function ScentWheel({ family, note, onSelect }: Props) {
                   const n = kids[j]!
                   const active = n.id === note
                   const r0 = R.noteIn + 14
-                  const nflip = flipLabel(ns.mid + rotation)
+                  const nflip = flipRadial(ns.mid + rotation)
                   const p = polar(C, C, nflip ? R.noteOut - 12 : r0, ns.mid)
                   return (
                     <g key={n.id} className={styles.note} data-active={active}>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { arcPath, flipLabel, polar, rotationFor, segments, subdivide } from './wheel'
+import { arcPath, flipLabel, flipRadial, polar, rotationFor, segments, subdivide } from './wheel'
 
 describe('wheel geometry', () => {
   it('measures angles from twelve o’clock, clockwise', () => {
@@ -36,5 +36,11 @@ describe('wheel geometry', () => {
     expect(flipLabel(45)).toBe(false)
     expect(flipLabel(180)).toBe(true)
     expect(flipLabel(-90)).toBe(false)
+  })
+
+  it('flips radial labels on the left half only', () => {
+    expect(flipRadial(90)).toBe(false)
+    expect(flipRadial(270)).toBe(true)
+    expect(flipRadial(-45)).toBe(true)
   })
 })

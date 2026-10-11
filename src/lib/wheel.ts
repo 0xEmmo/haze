@@ -59,3 +59,9 @@ export const flipLabel = (deg: number) => {
   const a = ((deg % 360) + 360) % 360
   return a > 90 && a < 270
 }
+
+/** Radial labels (running outward from the centre) read upside down on the left half. */
+export const flipRadial = (deg: number) => {
+  const a = ((deg % 360) + 360) % 360
+  return a > 180 && a < 360
+}

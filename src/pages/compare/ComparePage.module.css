@@ -156,3 +156,17 @@
   display: grid;
   gap: var(--space-3);
 }
+
+@media (max-width: 700px) {
+  .table {
+    min-width: calc(76px + var(--cols) * 176px);
+  }
+  .table thead td {
+    width: 76px;
+  }
+  .table tbody th {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding-inline: 0 var(--space-2);
+  }
+}

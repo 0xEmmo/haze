@@ -271,3 +271,9 @@
     grid-template-columns: repeat(6, 1fr);
   }
 }
+
+@media (max-width: 699px) {
+  .headPhoto {
+    display: none !important;
+  }
+}
