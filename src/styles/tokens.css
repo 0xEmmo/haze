@@ -1,0 +1,58 @@
+:root {
+  /* fog and smoke, with one warm ember */
+  --fog: #ece8e1;
+  --fog-deep: #e1dbd1;
+  --paper: #f7f4ef;
+  --paper-deep: #ebe5dc;
+  --ink: #1d1a18;
+  --ink-soft: #46403b;
+  --muted: #736b64;
+  --line: rgb(29 26 24 / 0.12);
+  --line-strong: rgb(29 26 24 / 0.24);
+  --smoke: #24201e;
+  --smoke-soft: #332e2b;
+  --on-smoke: #efe9e1;
+  --ember: #a5482a;
+  --ember-deep: #86381f;
+  --ember-tint: #f2e1d8;
+  --cocoa: var(--smoke);
+  --ok: #4c6a4a;
+  --ok-tint: #e2eadf;
+  --danger: #a1301f;
+  --danger-tint: #f6e5e0;
+
+  --font-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --font-text: 'Public Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(0.98rem, 0.95rem + 0.15vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.4rem, 1.25rem + 0.7vw, 1.85rem);
+  --step-3: clamp(1.8rem, 1.5rem + 1.4vw, 2.75rem);
+  --step-4: clamp(2.3rem, 1.8rem + 2.6vw, 4.25rem);
+  --step-5: clamp(2.9rem, 2rem + 4.6vw, 6.75rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 28px;
+  --radius-pill: 999px;
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --max: 1320px;
+  --header-h: 64px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --shadow-pop: 0 24px 60px -24px rgb(29 26 24 / 0.38), 0 2px 6px rgb(29 26 24 / 0.06);
+  --shadow-card: 0 1px 0 rgb(29 26 24 / 0.04), 0 12px 30px -18px rgb(29 26 24 / 0.25);
+  color-scheme: light;
+}
